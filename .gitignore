@@ -10,4 +10,4 @@ run/
 .DS_Store
 *.sw*
 *.un~
-./config/sequelize.js
+config/sequelize.js
