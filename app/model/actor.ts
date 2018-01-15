@@ -8,9 +8,8 @@ export interface ActorAttributes {
     nickName: DefineAttributeColumnOptions | string;
     profession: DefineAttributeColumnOptions | string;
     brief: DefineAttributeColumnOptions | string;
-    family: DefineAttributeColumnOptions | string;
     gender: DefineAttributeColumnOptions | number;
-    birthdata: DefineAttributeColumnOptions | number;
+    birthdate: DefineAttributeColumnOptions | number;
     createdAt: DefineAttributeColumnOptions | number;
     updatedAt: DefineAttributeColumnOptions | number;
 }
@@ -48,14 +47,11 @@ export default (app: Application) => {
         brief: {
             type: TEXT,
         },
-        family: {
-            type: TEXT,
-        },
         gender: {
             type: INTEGER.UNSIGNED,
             defaultValue: 0,
         },
-        birthdata: {
+        birthdate: {
             type: INTEGER.UNSIGNED,
             defaultValue: 0,
         },
@@ -71,7 +67,7 @@ export default (app: Application) => {
     const Actor = app.model.define('Actor', actorAttrDefine, {
         timestamps: false,
         freezeTableName: true,
-        tableName: 'z_user',
+        tableName: 'z_actor',
     });
     Actor.associate = function () {
 

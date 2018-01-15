@@ -2,8 +2,9 @@ import { Application } from 'egg';
 import { DefineAttributeColumnOptions } from '../../declear/sequelize';
 export interface ActorsRelationAttributes {
     id: DefineAttributeColumnOptions | number;
-    roleId: DefineAttributeColumnOptions | number;
-    otherRoleId: DefineAttributeColumnOptions | number;
+    actorId: DefineAttributeColumnOptions | number;
+    otherActorId: DefineAttributeColumnOptions | number;
+    is_family: DefineAttributeColumnOptions | number;
     relationship: DefineAttributeColumnOptions | string;
     descrip: DefineAttributeColumnOptions | string;
     createdAt: DefineAttributeColumnOptions | number;
@@ -17,20 +18,24 @@ export default (app: Application) => {
             primaryKey: true,
             autoIncrement: true,
         },
-        roleId: {
-            field: 'role_id',
+        actorId: {
+            field: 'actor_id',
             type: INTEGER.UNSIGNED,
             allowNull: false,
         },
-        otherRoleId: {
-            field: 'other_role_id',
+        otherActorId: {
+            field: 'other_actor_id',
             type: INTEGER.UNSIGNED,
             allowNull: false,
+        },
+        is_family: {
+            type: INTEGER.UNSIGNED,
+            defaultValue: 0
         },
         relationship: {
-            type: INTEGER.UNSIGNED,
+            type: STRING(100),
             allowNull: false,
-            comment: '关系0好友1情侣2夫妻3父子4母子5',
+            comment: '',
         },
         descrip: {
             type: STRING(100),
@@ -51,7 +56,7 @@ export default (app: Application) => {
     const ActorsRelation = app.model.define('ActorsRelation', actorsRelationAttrDefine, {
         timestamps: false,
         freezeTableName: true,
-        tableName: 'actors_relation'
+        tableName: 'z_actors_relation'
     });
     ActorsRelation.associate = function () {
 
