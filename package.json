@@ -1,0 +1,56 @@
+{
+  "name": "imitate-douban-server-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "egg": "^2.0.0",
+    "egg-core": "^4.3.0",
+    "egg-scripts": "^2.1.0",
+    "egg-sequelize": "^3.1.0",
+    "mysql2": "^1.5.1",
+    "tslib": "^1.8.1",
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.7",
+    "@types/mocha": "^2.2.46",
+    "@types/node": "^9.3.0",
+    "@types/supertest": "^2.0.4",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^5.1.0",
+    "reflect-metadata": "^0.1.10",
+    "sequelize-typescript": "^0.6.2",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "clean": "rimraf app/**/*.{js,map} test/**/*.{js,map} config/**/*.{js,map}",
+    "tsc": "tsc -p tsconfig.json",
+    "tsc:w": "tsc -p tsconfig.json -w",
+    "debug": "egg-bin debug",
+    "dev": "egg-bin dev",
+    "test": "npm run tsc && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "zengwe",
+  "license": "MIT"
+}
