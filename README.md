@@ -7,7 +7,7 @@ export let configPrivate = {
     host: '127.0.0.1',
     port: '3306',
     username: 'root',
-    password: '826150',        
+    password: '826150',   
     }
 }
 ```
