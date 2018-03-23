@@ -6542,3 +6542,8 @@ import * as cls from "continuation-local-storage"
 
     }
 
+    // myself
+    export type AttributsField<T> = {
+        [filed in keyof T]: DefineAttributeColumnOptions
+    }
+

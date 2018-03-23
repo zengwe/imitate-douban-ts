@@ -1,16 +1,14 @@
 import { Application } from 'egg';
-//import { Model } from '../../declear/sequelize';
-//import { Model } from './sequelize';
-//export declare let User: Model<any,any>;
-import { DefineAttributeColumnOptions } from '../../declear/sequelize';
+import { AttributsField } from '../../declear/sequelize';
 export interface UserAttributes {
-    id:  DefineAttributeColumnOptions | number;
-    username: DefineAttributeColumnOptions | string;
-    age: DefineAttributeColumnOptions | number;
+    id:  number;
+    username: string;
+    age: number;
+    password: string;
 }
 export default (app: Application) => {
     const {STRING, INTEGER} = app.Sequelize;
-    const userAttrDefine: UserAttributes = {
+    const userAttrDefine: AttributsField<UserAttributes> = {
         id: {
             type: INTEGER.UNSIGNED,
             primaryKey: true,
@@ -22,14 +20,19 @@ export default (app: Application) => {
         age: {
             type: INTEGER.UNSIGNED
         },
+        password: {
+            type: INTEGER.UNSIGNED,
+            allowNull: false
+        }
     }
     let User = app.model.define('User', userAttrDefine, {
         timestamps: false,
         freezeTableName: true,
-        tableName: 'z_user',
+        tableName: 'z_user'
     });
     User.associate = function() {
 
     }
+    
     return User;
 };

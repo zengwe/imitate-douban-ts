@@ -5,29 +5,20 @@ import { Actor, ActorAttributes } from './actor';
 import { ActorsRelation, ActorsRelationAttributes } from './actors-relation';
 import { ActorImage, ActorImageAttributes } from './actor-image';
 import { ActorImageComment, ActorImageCommentAttributes } from './actor-image-comment';
-interface ModelInstanceBase {
-  isNewRecord: boolean;  
+interface ModelInstanceBase<T> {
+  isNewRecord: boolean;
+  dataValues: T
 }
-interface UserInstance extends ModelInstanceBase, UserAttributes {
-  dataValues: UserAttributes
-}
-interface ActorInstance extends ModelInstanceBase, ActorAttributes {
-  dataValues: ActorAttributes
-}
-interface ActorsRelationInstance extends ModelInstanceBase, ActorsRelationAttributes {
-  dataValues: ActorsRelationAttributes
-}
-interface ActorImageInstance extends ModelInstanceBase, ActorImageAttributes {
-  dataValues: ActorImageAttributes;
-}
-interface ActorImageCommentInstance extends ModelInstanceBase, ActorImageCommentAttributes {
-  dataValues: ActorImageCommentAttributes
-}
+interface UserInstance extends ModelInstanceBase<UserAttributes>, UserAttributes {};
+interface ActorInstance extends ModelInstanceBase<ActorAttributes>, ActorAttributes {};
+interface ActorsRelationInstance extends ModelInstanceBase<ActorsRelationAttributes>, ActorsRelationAttributes {};
+interface ActorImageInstance extends ModelInstanceBase<ActorImageAttributes>, ActorImageAttributes {};
+interface ActorImageCommentInstance extends ModelInstanceBase<ActorImageCommentAttributes>, ActorImageCommentAttributes {};
 declare module 'egg' {
   export interface Application {
     model:{
         define: define,
-        User: Model<UserInstance | null, UserAttributes>;
+        User: Model<UserInstance | null, UserAttributes>
         Actor: Model<ActorInstance | null, ActorAttributes>;
         ActorsRelation: Model<ActorsRelationInstance | null, ActorsRelationAttributes>;
         ActorImage: Modle<ActorImageInstance | null, ActorImageAttributes>;

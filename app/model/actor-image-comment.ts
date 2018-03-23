@@ -1,18 +1,18 @@
 import { Application } from 'egg';
-import { DefineAttributeColumnOptions } from '../../declear/sequelize';
+import { AttributsField } from '../../declear/sequelize';
 export interface ActorImageCommentAttributes {
-    id: DefineAttributeColumnOptions | number;
-    comment: DefineAttributeColumnOptions | string;
-    userId: DefineAttributeColumnOptions | number;
-    status: DefineAttributeColumnOptions | number;
-    descrip: DefineAttributeColumnOptions | number;
-    createdUserId: DefineAttributeColumnOptions | number;
-    createdAt: DefineAttributeColumnOptions | number;
-    updatedAt: DefineAttributeColumnOptions | number;
+    id: number;
+    comment: string;
+    userId: number;
+    status: number;
+    descrip: number;
+    createdUserId: number;
+    createdAt: number;
+    updatedAt: number;
 }
 export default (app: Application) => {
     const { STRING, INTEGER } = app.Sequelize;
-    const actorImageCommentAttrDefine: ActorImageCommentAttributes = {
+    const actorImageCommentAttrDefine: AttributsField<ActorImageCommentAttributes> = {
         id: {
             type: INTEGER.UNSIGNED,
             primaryKey: true,

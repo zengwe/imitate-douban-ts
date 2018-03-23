@@ -1,18 +1,18 @@
 import { Application } from 'egg';
-import { DefineAttributeColumnOptions } from '../../declear/sequelize';
+import { AttributsField } from '../../declear/sequelize';
 export interface ActorsRelationAttributes {
-    id: DefineAttributeColumnOptions | number;
-    actorId: DefineAttributeColumnOptions | number;
-    otherActorId: DefineAttributeColumnOptions | number;
-    is_family: DefineAttributeColumnOptions | number;
-    relationship: DefineAttributeColumnOptions | string;
-    descrip: DefineAttributeColumnOptions | string;
-    createdAt: DefineAttributeColumnOptions | number;
-    updatedAt: DefineAttributeColumnOptions | number;
+    id: number;
+    actorId: number;
+    otherActorId: number;
+    is_family: number;
+    relationship: string;
+    descrip: string;
+    createdAt: number;
+    updatedAt: number;
 }
 export default (app: Application) => {
     const { STRING, INTEGER } = app.Sequelize;
-    const actorsRelationAttrDefine: ActorsRelationAttributes = {
+    const actorsRelationAttrDefine: AttributsField<ActorsRelationAttributes> = {
         id: {
             type: INTEGER.UNSIGNED,
             primaryKey: true,
@@ -51,7 +51,7 @@ export default (app: Application) => {
             field: 'update_time',
             type: INTEGER.UNSIGNED,
             defaultValue: 0,
-        },
+        }
     }
     const ActorsRelation = app.model.define('ActorsRelation', actorsRelationAttrDefine, {
         timestamps: false,
